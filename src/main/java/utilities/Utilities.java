@@ -1,6 +1,7 @@
 package utilities;
 
 import java.io.File;
+import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -16,6 +17,10 @@ import javax.swing.JFrame;
 import models.Song;
 
 public class Utilities extends UnicastRemoteObject implements IUtilities {
+    
+    public Utilities() throws RemoteException {
+        super();
+    }
     
     /**
     * Connessione del database
