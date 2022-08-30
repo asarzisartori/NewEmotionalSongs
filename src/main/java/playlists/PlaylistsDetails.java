@@ -13,8 +13,10 @@ import javax.swing.table.DefaultTableModel;
 import utilities.Globals;
 
 /**
- *
- * @author andre
+ * Classe che permette la visualizzazione delle canzoni presenti nella playlist
+ * 
+ * @author Andrea Sarzi Sartori 726624 Varese
+ * @author Samuele Cervini 726624 Varese
  */
 public class PlaylistsDetails extends javax.swing.JFrame {
 
@@ -22,7 +24,7 @@ public class PlaylistsDetails extends javax.swing.JFrame {
     private String currentSongId = null;
     
     /**
-     * Creates new form PlaylistsDetails
+     * Costruttore di PlaylistsDetails
      */
     public PlaylistsDetails() {
         initComponents();

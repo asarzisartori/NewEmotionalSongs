@@ -1,15 +1,6 @@
-/**
- * Samuele Cervini
- * 726624
- * Varese
- * 
- * Andrea Sarzi Sartori
- * 726694
- * Varese
- */
 package emotionalsongs;
 
-import java.io.File;
+import java.awt.Toolkit;
 import java.rmi.RemoteException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,14 +12,15 @@ import utilities.Utilities;
 import utilities.Globals;
 
 /**
- * Classe che permette di fare Login, Registrarsi o accedere all'Accesso Libero dell'applicazione EmotionalSongs
- * @author Cervini Samuele
- * @author Sarzi Sartori Andrea
+ * Classe che permette l'avvio del client
+ * 
+ * @author Andrea Sarzi Sartori 726624 Varese
+ * @author Samuele Cervini 726624 Varese
  */
 public class EmotionalSongs extends javax.swing.JFrame {
     
     /**
-     * Viene creato il nuovo form della classe
+     * Costruttore di EmotionalSongs
      */
     public EmotionalSongs() {
         
@@ -43,7 +35,7 @@ public class EmotionalSongs extends javax.swing.JFrame {
         
         initComponents();
         
-        jLabel5.setIcon(new ImageIcon(System.getProperty("user.dir") + File.separator + "src" + File.separator + "main" + File.separator + "java" + File.separator + "images" + File.separator + "login.png"));
+        label_img.setIcon(new ImageIcon(Toolkit.getDefaultToolkit().getImage(Server.class.getResource("/login.png"))));
         Utilities.setLogoES(this);
     }
 
@@ -64,7 +56,7 @@ public class EmotionalSongs extends javax.swing.JFrame {
         btn_libero = new javax.swing.JButton();
         btn_registrazione = new javax.swing.JButton();
         btn_login = new javax.swing.JButton();
-        jLabel5 = new javax.swing.JLabel();
+        label_img = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -103,7 +95,7 @@ public class EmotionalSongs extends javax.swing.JFrame {
             pnl_mainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(pnl_mainLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(label_img, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(pnl_mainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, pnl_mainLayout.createSequentialGroup()
                         .addGap(3, 3, 3)
@@ -138,7 +130,7 @@ public class EmotionalSongs extends javax.swing.JFrame {
                         .addGroup(pnl_mainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(psw_user, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel2)))
-                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(label_img, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 11, Short.MAX_VALUE)
                 .addGroup(pnl_mainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btn_libero)
@@ -289,7 +281,7 @@ public class EmotionalSongs extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel label_img;
     private javax.swing.JPanel pnl_main;
     private javax.swing.JPasswordField psw_user;
     private javax.swing.JTextField txt_nickname;

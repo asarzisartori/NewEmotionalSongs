@@ -1,10 +1,12 @@
 package users;
 
 import emotionalsongs.EmotionalSongs;
+import emotionalsongs.Server;
 import songs.Search;
 import playlists.Playlists;
 import java.awt.Cursor;
 import java.awt.Font;
+import java.awt.Toolkit;
 import java.io.File;
 import java.rmi.RemoteException;
 import java.util.ArrayList;
@@ -19,13 +21,15 @@ import utilities.Globals;
 import utilities.Utilities;
 
 /**
- *
- * @author andre
+ * Classe che permette la gestione dell'utenza dopo il login
+ * 
+ * @author Andrea Sarzi Sartori 726624 Varese
+ * @author Samuele Cervini 726624 Varese
  */
 public class LoggedPanel extends javax.swing.JFrame {
     
     /**
-     * Creates new form LoggedPanel
+     * Costruttore di LoggedPanel
      */
     public LoggedPanel() {
         initComponents();
@@ -34,9 +38,9 @@ public class LoggedPanel extends javax.swing.JFrame {
         label_personalinfo.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
         label_personalinfo.setText("<HTML><U>Le mie info</U></HTML>");
         
-        label_mainicon.setIcon(new ImageIcon(System.getProperty("user.dir") + File.separator + "src" + File.separator + "main" + File.separator + "java" + File.separator + "images" + File.separator + "user.png"));
-        label_search.setIcon(new ImageIcon(System.getProperty("user.dir") + File.separator + "src" + File.separator + "main" + File.separator + "java" + File.separator + "images" + File.separator + "search.png"));
-        label_playlist.setIcon(new ImageIcon(System.getProperty("user.dir") + File.separator + "src" + File.separator + "main" + File.separator + "java" + File.separator + "images" + File.separator + "playlist.png"));
+        label_mainicon.setIcon(new ImageIcon(Toolkit.getDefaultToolkit().getImage(Server.class.getResource("/user.png"))));
+        label_search.setIcon(new ImageIcon(Toolkit.getDefaultToolkit().getImage(Server.class.getResource("/search.png"))));
+        label_playlist.setIcon(new ImageIcon(Toolkit.getDefaultToolkit().getImage(Server.class.getResource("/playlist.png"))));
         Utilities.setLogoES(this);
     }
 

@@ -11,13 +11,15 @@ import utilities.Globals;
 import utilities.Utilities;
 
 /**
- *
- * @author andre
+ * Classe che permette l'avvio del server
+ * 
+ * @author Andrea Sarzi Sartori 726624 Varese
+ * @author Samuele Cervini 726624 Varese
  */
 public class Server extends javax.swing.JFrame {
 
     /**
-     * Creates new form Server
+     * Costruttore di Server
      */
     public Server() {
         initComponents();

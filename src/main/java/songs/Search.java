@@ -1,7 +1,8 @@
 package songs;
 
 import emotionalsongs.EmotionalSongs;
-import java.io.File;
+import emotionalsongs.Server;
+import java.awt.Toolkit;
 import java.rmi.RemoteException;
 import users.LoggedPanel;
 import utilities.Utilities;
@@ -13,19 +14,20 @@ import javax.swing.table.DefaultTableModel;
 import utilities.Globals;
 
 /**
- * Classe che gestisce la pagina per la ricerca delle canzoni
- * @author Cervini Samuele
- * @author Sarzi Sartori Andrea
+ * Classe che permette la ricerca delle canzoni
+ * 
+ * @author Andrea Sarzi Sartori 726624 Varese
+ * @author Samuele Cervini 726624 Varese
  */
 public class Search extends javax.swing.JFrame {
     
     /**
-     * Viene creato il nuovo form della classe
+     * Costruttore di Search
      */
     public Search() {
         initComponents();
         
-        label_img.setIcon(new ImageIcon(System.getProperty("user.dir") + File.separator + "src" + File.separator + "main" + File.separator + "java" + File.separator + "images" + File.separator + "song.png"));
+        label_img.setIcon(new ImageIcon(Toolkit.getDefaultToolkit().getImage(Server.class.getResource("/song.png"))));
         Utilities.setLogoES(this);
         
         //La ricerca è impostata di default su quella del Nome

@@ -7,13 +7,15 @@ import utilities.Globals;
 import utilities.Utilities;
 
 /**
- *
- * @author andre
+ * Classe che permette la creazione della playlist
+ * 
+ * @author Andrea Sarzi Sartori 726624 Varese
+ * @author Samuele Cervini 726624 Varese
  */
 public class PlaylistCreation extends javax.swing.JFrame {
     
     /**
-     * Creates new form PlaylistCreation
+     * Costruttore di PlaylistCreation
      */
     public PlaylistCreation() {
         initComponents();

@@ -14,21 +14,28 @@ import utilities.Globals;
 import models.Song;
 
 /**
- *
- * @author andre
+ * Classe che permette la visualizzazione del dettaglio di una canzone
+ * 
+ * @author Andrea Sarzi Sartori 726624 Varese
+ * @author Samuele Cervini 726624 Varese
  */
 public class SongsDetails extends javax.swing.JFrame {
 
     public String id;
-    
+
     /**
-     * Creates new form LoggedDetailedSong
+     * Costruttore di SongsDetails vuoto
      */
     public SongsDetails() {
         initComponents();
         Utilities.setLogoES(this);
     }
     
+    /**
+     * Costruttore di SongsDetails con id come parametro di passaggio
+     * 
+     * @param id Id della canzone di cui voler vedere i dettagli
+     */
     public SongsDetails(String id) {
         try {
             this.id = id;

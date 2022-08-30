@@ -1,6 +1,7 @@
 package utilities;
 
-import java.io.File;
+import java.awt.Toolkit;
+import java.io.InputStream;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.sql.Connection;
@@ -10,9 +11,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.Scanner;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import models.Song;
 
@@ -25,10 +26,11 @@ public class Utilities extends UnicastRemoteObject implements IUtilities {
     /**
     * Connessione del database
     * 
-    * @param name Nome del DB
-    * @param user Nome utente
+    * @param dbname Nome del DB
+    * @param port Nome utente
     * @param password Password
-    * @throws Exception
+    * @param host host
+    * @param user user
     */
    @Override
    public synchronized String tryFirstConnection(String host, String dbname, String port, String user, String password) {
@@ -83,6 +85,7 @@ public class Utilities extends UnicastRemoteObject implements IUtilities {
                                  Titolo VARCHAR NOT NULL
                                  );""";
             stmt.execute(sql_canzoni);
+            populateDBWithSongs(connection);
             
             String sql_emozioni = """
                                   CREATE TABLE Emozioni (
@@ -113,6 +116,32 @@ public class Utilities extends UnicastRemoteObject implements IUtilities {
             stmt.execute(sql_playlistassociate);
        } catch (SQLException ex) {
            Logger.getLogger(Utilities.class.getName()).log(Level.SEVERE, null, ex);
+       }
+   }
+   
+   @Override
+   public synchronized void populateDBWithSongs(Connection connection) {
+       
+        InputStream is = Utilities.class.getResourceAsStream("/Canzoni.txt");
+        Scanner scanner = new Scanner(is);
+        
+        while (scanner.hasNext()) {
+            try {
+                String record = scanner.nextLine();
+                String song[] = record.split(",");
+                
+                PreparedStatement st = connection.prepareStatement("INSERT INTO canzoni (anno, id, autore, titolo) VALUES (?, ?, ?, ?)");
+                
+                st.setString(1, song[0]);
+                st.setString(2, song[1]);
+                st.setString(3, song[2]);
+                st.setString(4, song[3]);
+                
+                st.executeUpdate();
+                st.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Utilities.class.getName()).log(Level.SEVERE, null, ex);
+            }
        }
    }
    
@@ -928,13 +957,11 @@ public class Utilities extends UnicastRemoteObject implements IUtilities {
     }
     
     public synchronized static void setLogoES(JFrame jframe) {
-        ImageIcon img = new ImageIcon(System.getProperty("user.dir") + File.separator + "src" + File.separator + "main" + File.separator + "java" + File.separator + "images" + File.separator + "logo.png");
-        jframe.setIconImage(img.getImage());
+        jframe.setIconImage(Toolkit.getDefaultToolkit().getImage(Utilities.class.getResource("/logo.png")));
     }
     
     public synchronized static void setLogoDB(JFrame jframe) {
-        ImageIcon img = new ImageIcon(System.getProperty("user.dir") + File.separator + "src" + File.separator + "main" + File.separator + "java" + File.separator + "images" + File.separator + "database.png");
-        jframe.setIconImage(img.getImage());
+        jframe.setIconImage(Toolkit.getDefaultToolkit().getImage(Utilities.class.getResource("/database.png")));
     }
     
 }

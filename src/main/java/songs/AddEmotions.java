@@ -1,5 +1,7 @@
 package songs;
 
+import emotionalsongs.Server;
+import java.awt.Toolkit;
 import java.io.File;
 import java.rmi.RemoteException;
 import java.util.logging.Level;
@@ -10,23 +12,30 @@ import javax.swing.JSpinner.DefaultEditor;
 import utilities.Globals;
 
 /**
- *
- * @author andre
+ * Classe che permette l'aggiunta delle emozioni alle canzoni selezionate
+ * 
+ * @author Andrea Sarzi Sartori 726624 Varese
+ * @author Samuele Cervini 726624 Varese
  */
 public class AddEmotions extends javax.swing.JFrame {
 
     String idCanzone;
     
     /**
-     * Creates new form AddEmotions
+     * Costruttore di AddEmotions vuoto
      */
     public AddEmotions() {
         initComponents();
         
-        label_img.setIcon(new ImageIcon(System.getProperty("user.dir") + File.separator + "src" + File.separator + "main" + File.separator + "java" + File.separator + "images" + File.separator + "emotions.png"));
+        label_img.setIcon(new ImageIcon(Toolkit.getDefaultToolkit().getImage(Server.class.getResource("/emotions.png"))));
         Utilities.setLogoES(this);
     }
     
+    /**
+     * Costruttore di AddEmotions con idCanzone come elemento
+     * 
+     * @param idCanzone Id della canzone alla quale si vogliono aggiungere delle meozioni
+     */
     public AddEmotions(String idCanzone) {
         this.idCanzone = idCanzone;
         

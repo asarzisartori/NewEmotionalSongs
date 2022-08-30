@@ -1,6 +1,7 @@
 package playlists;
 
-import java.io.File;
+import emotionalsongs.Server;
+import java.awt.Toolkit;
 import java.rmi.RemoteException;
 import users.LoggedPanel;
 import utilities.Utilities;
@@ -12,18 +13,23 @@ import javax.swing.table.DefaultTableModel;
 import utilities.Globals;
 
 /**
- *
- * @author andre
+ * Classe che permette la visualizzazione delle playlist
+ * 
+ * @author Andrea Sarzi Sartori 726624 Varese
+ * @author Samuele Cervini 726624 Varese
  */
 public class Playlists extends javax.swing.JFrame {
     
     /**
-     * Creates new form Playlists
+     * Costruttore di Playlists
+     * 
+     * @throws RemoteException 
      */
     public Playlists() throws RemoteException {
         initComponents();
         
-        label_img.setIcon(new ImageIcon(System.getProperty("user.dir") + File.separator + "src" + File.separator + "main" + File.separator + "java" + File.separator + "images" + File.separator + "playlist_list.png"));
+        
+        label_img.setIcon(new ImageIcon(Toolkit.getDefaultToolkit().getImage(Server.class.getResource("/playlist_list.png"))));
         Utilities.setLogoES(this);
         
         DefaultTableModel listModel = (DefaultTableModel)listbox.getModel();

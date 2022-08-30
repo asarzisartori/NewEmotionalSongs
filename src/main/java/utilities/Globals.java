@@ -6,8 +6,10 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
 /**
- *
- * @author andre
+ * Classe che permette di gestire le variabili globali
+ * 
+ * @author Andrea Sarzi Sartori 726624 Varese
+ * @author Samuele Cervini 726624 Varese
  */
 public class Globals {
    
@@ -25,7 +27,11 @@ public class Globals {
    //Variabile per poter richiamare i metodi remoti
    public static IUtilities server = null;
    
-   //Metodo statico per permettere il funzionamento dell'RMI
+   /**
+    * Permette la connesione al registro RMI
+    * 
+    * @return Stringa di controllo
+    */
    public static String connectToRegistry() {
        
        String check = "";
@@ -41,10 +47,20 @@ public class Globals {
        return check;
    }
    
+   /**
+    * Imposta se l'utente è loggato o no
+    * 
+    * @param condition Variabile di controllo
+    */
    public synchronized static void setIsUserLogged(Boolean condition) {
        isUserLogged = condition;
    }
        
+   /**
+    * Imposta lo username dell'utente loggato
+    * 
+    * @param username Username dell'utente
+    */
    public synchronized static void setCurrentUsername(String username) {
        currentUsername = username;
    }

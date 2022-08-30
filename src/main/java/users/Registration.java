@@ -1,7 +1,8 @@
 package users;
 
 import emotionalsongs.EmotionalSongs;
-import java.io.File;
+import emotionalsongs.Server;
+import java.awt.Toolkit;
 import java.rmi.RemoteException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -11,19 +12,20 @@ import javax.swing.ImageIcon;
 import utilities.Globals;
 
 /**
- * Classe che gestisce la registrazione del cliente
- * @author Cervini Samuele
- * @author Sarzi Sartori Andrea
+ * Classe che permette di gestire la registrazione dell'utente
+ * 
+ * @author Andrea Sarzi Sartori 726624 Varese
+ * @author Samuele Cervini 726624 Varese
  */
 public class Registration extends javax.swing.JFrame {
     
     /**
-     * Viene creato il nuovo form della classe
+     * Costruttore di Registration
      */
     public Registration() {
         initComponents();
         
-        label_img.setIcon(new ImageIcon(System.getProperty("user.dir") + File.separator + "src" + File.separator + "main" + File.separator + "java" + File.separator + "images" + File.separator + "registration.png"));
+        label_img.setIcon(new ImageIcon(Toolkit.getDefaultToolkit().getImage(Server.class.getResource("/registration.png"))));
         Utilities.setLogoES(this);
     }
 
