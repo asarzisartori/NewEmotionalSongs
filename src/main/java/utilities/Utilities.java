@@ -17,8 +17,19 @@ import java.util.logging.Logger;
 import javax.swing.JFrame;
 import models.Song;
 
+/**
+ * Classe che permette l'implementazione di tutti i metodi utilizzati in EmotionalSongs
+ * 
+ * @author Andrea Sarzi Sartori 726694 Varese
+ * @author Samuele Cervini 726624 Varese
+ */
 public class Utilities extends UnicastRemoteObject implements IUtilities {
     
+    /**
+     * Costruttore di Utilities
+     * 
+     * @throws RemoteException 
+     */
     public Utilities() throws RemoteException {
         super();
     }

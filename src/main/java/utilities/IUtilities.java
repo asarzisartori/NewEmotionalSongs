@@ -9,7 +9,7 @@ import models.Song;
 /**
  * Classe che permette la gestione di tutti i metodi utilizzati in EmotionalSongs
  * 
- * @author Andrea Sarzi Sartori 726624 Varese
+ * @author Andrea Sarzi Sartori 726694 Varese
  * @author Samuele Cervini 726624 Varese
  */
 public interface IUtilities extends Remote {

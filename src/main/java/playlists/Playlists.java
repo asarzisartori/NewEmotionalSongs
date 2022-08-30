@@ -15,7 +15,7 @@ import utilities.Globals;
 /**
  * Classe che permette la visualizzazione delle playlist
  * 
- * @author Andrea Sarzi Sartori 726624 Varese
+ * @author Andrea Sarzi Sartori 726694 Varese
  * @author Samuele Cervini 726624 Varese
  */
 public class Playlists extends javax.swing.JFrame {

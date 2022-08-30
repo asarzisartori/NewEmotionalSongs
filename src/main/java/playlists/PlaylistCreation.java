@@ -9,7 +9,7 @@ import utilities.Utilities;
 /**
  * Classe che permette la creazione della playlist
  * 
- * @author Andrea Sarzi Sartori 726624 Varese
+ * @author Andrea Sarzi Sartori 726694 Varese
  * @author Samuele Cervini 726624 Varese
  */
 public class PlaylistCreation extends javax.swing.JFrame {

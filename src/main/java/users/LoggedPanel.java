@@ -23,7 +23,7 @@ import utilities.Utilities;
 /**
  * Classe che permette la gestione dell'utenza dopo il login
  * 
- * @author Andrea Sarzi Sartori 726624 Varese
+ * @author Andrea Sarzi Sartori 726694 Varese
  * @author Samuele Cervini 726624 Varese
  */
 public class LoggedPanel extends javax.swing.JFrame {

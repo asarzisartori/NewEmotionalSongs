@@ -14,7 +14,7 @@ import utilities.Globals;
 /**
  * Classe che permette l'aggiunta delle emozioni alle canzoni selezionate
  * 
- * @author Andrea Sarzi Sartori 726624 Varese
+ * @author Andrea Sarzi Sartori 726694 Varese
  * @author Samuele Cervini 726624 Varese
  */
 public class AddEmotions extends javax.swing.JFrame {

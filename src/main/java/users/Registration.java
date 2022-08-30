@@ -14,7 +14,7 @@ import utilities.Globals;
 /**
  * Classe che permette di gestire la registrazione dell'utente
  * 
- * @author Andrea Sarzi Sartori 726624 Varese
+ * @author Andrea Sarzi Sartori 726694 Varese
  * @author Samuele Cervini 726624 Varese
  */
 public class Registration extends javax.swing.JFrame {

@@ -3,7 +3,7 @@ package models;
 /**
  * Classe che permette l'utilizzo di Playlist come modello
  * 
- * @author Andrea Sarzi Sartori 726624 Varese
+ * @author Andrea Sarzi Sartori 726694 Varese
  * @author Samuele Cervini 726624 Varese
  */
 public class Playlist implements java.io.Serializable {

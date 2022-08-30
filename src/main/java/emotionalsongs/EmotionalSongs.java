@@ -14,7 +14,7 @@ import utilities.Globals;
 /**
  * Classe che permette l'avvio del client
  * 
- * @author Andrea Sarzi Sartori 726624 Varese
+ * @author Andrea Sarzi Sartori 726694 Varese
  * @author Samuele Cervini 726624 Varese
  */
 public class EmotionalSongs extends javax.swing.JFrame {
