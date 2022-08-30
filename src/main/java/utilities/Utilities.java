@@ -387,7 +387,7 @@ public class Utilities extends UnicastRemoteObject implements IUtilities {
             Statement stmt = connection.createStatement();
             
             for (int i = 0; i < emotions.length; i++) {
-                ResultSet rs = stmt.executeQuery("SELECT * FROM public.emozioni WHERE nome = '" + emotions[i] + "' AND idutente = '" + idutente + "'");
+                ResultSet rs = stmt.executeQuery("SELECT * FROM public.emozioni WHERE nome = '" + emotions[i] + "' AND idutente = '" + idutente + "' AND idcanzone = '" + idcanzone + "'");
                 
                 if (!rs.isBeforeFirst()) {
                     if (emotions_intensity[i] != 0) {
@@ -956,10 +956,20 @@ public class Utilities extends UnicastRemoteObject implements IUtilities {
         return nome;
     }
     
+    /**
+     * Metodo che permette di settare il logo al Client
+     * 
+     * @param jframe Pannello di riferimento
+     */
     public synchronized static void setLogoES(JFrame jframe) {
         jframe.setIconImage(Toolkit.getDefaultToolkit().getImage(Utilities.class.getResource("/logo.png")));
     }
     
+    /**
+     * Metodo che permette di settare il logo al Database
+     * 
+     * @param jframe Pannello di riferimento
+     */
     public synchronized static void setLogoDB(JFrame jframe) {
         jframe.setIconImage(Toolkit.getDefaultToolkit().getImage(Utilities.class.getResource("/database.png")));
     }
