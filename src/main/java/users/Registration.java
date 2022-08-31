@@ -4,11 +4,15 @@ import emotionalsongs.EmotionalSongs;
 import emotionalsongs.Server;
 import java.awt.Toolkit;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import utilities.Utilities;
 import java.util.regex.Pattern;
 import javax.swing.ImageIcon;
+import javax.swing.JComponent;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import utilities.Globals;
 
 /**
@@ -41,8 +45,8 @@ public class Registration extends javax.swing.JFrame {
         pnl_main = new javax.swing.JPanel();
         txt_name = new javax.swing.JTextField();
         txt_surname = new javax.swing.JTextField();
-        txt_comune = new javax.swing.JTextField();
-        txt_sigla = new javax.swing.JTextField();
+        txt_address = new javax.swing.JTextField();
+        txt_cf = new javax.swing.JTextField();
         txt_email = new javax.swing.JTextField();
         txt_nickname = new javax.swing.JTextField();
         psw_first = new javax.swing.JPasswordField();
@@ -63,9 +67,9 @@ public class Registration extends javax.swing.JFrame {
         setTitle("Registrazione");
         setResizable(false);
 
-        txt_comune.addActionListener(new java.awt.event.ActionListener() {
+        txt_address.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_comuneActionPerformed(evt);
+                txt_addressActionPerformed(evt);
             }
         });
 
@@ -127,8 +131,8 @@ public class Registration extends javax.swing.JFrame {
                     .addComponent(psw_second, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 333, Short.MAX_VALUE)
                     .addComponent(txt_nickname, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txt_email, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txt_comune, javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txt_sigla, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txt_address, javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txt_cf, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txt_surname, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txt_name, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(psw_first))
@@ -153,11 +157,11 @@ public class Registration extends javax.swing.JFrame {
                     .addComponent(jLabel2))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(pnl_mainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_sigla, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_cf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(pnl_mainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txt_comune, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txt_address, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
                 .addGroup(pnl_mainLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -221,11 +225,12 @@ public class Registration extends javax.swing.JFrame {
     private void btm_registerActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btm_registerActionPerformed
         
         Pattern EMAIL_PATTERN = Pattern.compile("^[\\w!#$%&’*+/=?`{|}~^-]+(?:\\.[\\w!#$%&’*+/=?`{|}~^-]+)*@(?:[a-zA-Z0-9-]+\\.)+[a-zA-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
+        Pattern CF_PATTERN = Pattern.compile("^[A-Za-z]{6}[0-9]{2}[A-Za-z]{1}[0-9]{2}[A-Za-z]{1}[0-9]{3}[A-Za-z]{1}$", Pattern.CASE_INSENSITIVE);
         
         String nome = txt_name.getText();
         String cognome = txt_surname.getText();
-        String CF = txt_comune.getText();
-        String indirizzo = txt_sigla.getText();
+        String indirizzo = txt_address.getText();
+        String CF = txt_cf.getText();
         String email = txt_email.getText();
         String username = txt_nickname.getText();
         String first_password = psw_first.getText();
@@ -240,11 +245,62 @@ public class Registration extends javax.swing.JFrame {
         !username.equals("") &&
         !first_password.equals("") &&
         second_password.equals(first_password) &&
-        (EMAIL_PATTERN.matcher(email)).matches();
+        (EMAIL_PATTERN.matcher(email)).matches() &&
+        (CF_PATTERN.matcher(CF)).matches();
+        
+        if (!ok) {
+            
+            ArrayList<String> list = new ArrayList<>();
+            
+            if (nome.equals("")) {
+                list.add("Nome");
+            }
+            
+            if (cognome.equals("")) {
+                list.add("Cognome");
+            }
+            
+            if (CF.equals("")) {
+                list.add("CF");
+            }
+            
+            if (indirizzo.equals("")) {
+                list.add("Indirizzo");
+            }
+            
+            if (email.equals("")) {
+                list.add("Email");
+            }
+            
+            if (username.equals("")) {
+                list.add("Username");
+            }
+            
+            if (first_password.equals("")) {
+                list.add("Password");
+            }
+            
+            if (!email.equals("") && !(EMAIL_PATTERN.matcher(email)).matches()) {
+                list.add("L'email non è scritta in un formato valido");
+            }
+            
+            if (!CF.equals("") && !(CF_PATTERN.matcher(CF)).matches()) {
+                list.add("Il codice fiscale non è scritto in un formato valido");
+            }
+            
+            final JComponent[] inputs = new JComponent[list.size()];
+            
+            for (int i = 0; i < list.size(); i++) {
+                inputs[i] = new JLabel(" - ".concat(list.get(i)));
+            }
+            
+                
+            JOptionPane.showConfirmDialog(null, inputs, "Problema con i campi:", JOptionPane.PLAIN_MESSAGE);
+        }
         
         if (ok) {
-            
             try {
+                
                 Boolean checkUsername = Globals.server.checkIfAlreadyRegistered("username", username);
                 Boolean checkEmail = Globals.server.checkIfAlreadyRegistered("email", email);
                 
@@ -276,15 +332,11 @@ public class Registration extends javax.swing.JFrame {
                 Logger.getLogger(Registration.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        else
-        {
-            javax.swing.JOptionPane.showMessageDialog(getContentPane(), "Ricontrollare i dati inseriti!", "Errore", javax.swing.JOptionPane.ERROR_MESSAGE);
-        }
     }//GEN-LAST:event_btm_registerActionPerformed
 
-    private void txt_comuneActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_comuneActionPerformed
+    private void txt_addressActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_addressActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txt_comuneActionPerformed
+    }//GEN-LAST:event_txt_addressActionPerformed
 
     /**
      * @param args the command line arguments
@@ -339,11 +391,11 @@ public class Registration extends javax.swing.JFrame {
     private javax.swing.JPanel pnl_main;
     private javax.swing.JPasswordField psw_first;
     private javax.swing.JPasswordField psw_second;
-    private javax.swing.JTextField txt_comune;
+    private javax.swing.JTextField txt_address;
+    private javax.swing.JTextField txt_cf;
     private javax.swing.JTextField txt_email;
     private javax.swing.JTextField txt_name;
     private javax.swing.JTextField txt_nickname;
-    private javax.swing.JTextField txt_sigla;
     private javax.swing.JTextField txt_surname;
     // End of variables declaration//GEN-END:variables
 }

@@ -28,7 +28,6 @@ public class Playlists extends javax.swing.JFrame {
     public Playlists() throws RemoteException {
         initComponents();
         
-        
         label_img.setIcon(new ImageIcon(Toolkit.getDefaultToolkit().getImage(Server.class.getResource("/playlist_list.png"))));
         Utilities.setLogoES(this);
         

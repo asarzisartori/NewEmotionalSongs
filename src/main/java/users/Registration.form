@@ -75,8 +75,8 @@
                       <Component id="psw_second" alignment="0" pref="333" max="32767" attributes="0"/>
                       <Component id="txt_nickname" alignment="0" max="32767" attributes="0"/>
                       <Component id="txt_email" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txt_comune" alignment="0" max="32767" attributes="0"/>
-                      <Component id="txt_sigla" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txt_address" alignment="0" max="32767" attributes="0"/>
+                      <Component id="txt_cf" alignment="0" max="32767" attributes="0"/>
                       <Component id="txt_surname" alignment="0" max="32767" attributes="0"/>
                       <Component id="txt_name" alignment="0" max="32767" attributes="0"/>
                       <Component id="psw_first" max="32767" attributes="0"/>
@@ -107,12 +107,12 @@
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txt_sigla" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_cf" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txt_comune" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="txt_address" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -150,12 +150,12 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txt_surname">
         </Component>
-        <Component class="javax.swing.JTextField" name="txt_comune">
+        <Component class="javax.swing.JTextField" name="txt_address">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_comuneActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_addressActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JTextField" name="txt_sigla">
+        <Component class="javax.swing.JTextField" name="txt_cf">
         </Component>
         <Component class="javax.swing.JTextField" name="txt_email">
         </Component>
